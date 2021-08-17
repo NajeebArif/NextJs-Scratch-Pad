@@ -42,7 +42,7 @@ function CompA(props) {
 
   useEffect(() => {
     console.log('useEffect is called')
-  }, [])
+  }, [value])
 
   return (
     <>
