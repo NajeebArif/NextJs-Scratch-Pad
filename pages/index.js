@@ -2,27 +2,27 @@
 import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-class CompB extends React.Component{
+class CompB extends React.Component {
 
   state = {
     value: 0
   }
 
-  changeState(incrementor){
+  changeState(incrementor) {
     this.setState({
       value: this.state.value + incrementor
     })
   }
 
-  render(){
+  render() {
     return (
       <>
-       <h2>Class Component</h2>
-       <div>
-        <span>Current Value value: {this.state.value}</span>
-        <button onClick={() => this.changeState(1)}>+</button>
-        <button onClick={() => this.changeState(-1)}>-</button>
-      </div>
+        <h2>Class Component</h2>
+        <div>
+          <span>Current Value value: {this.state.value}</span>
+          <button onClick={() => this.changeState(1)}>+</button>
+          <button onClick={() => this.changeState(-1)}>-</button>
+        </div>
       </>
     )
   }
