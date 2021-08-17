@@ -38,22 +38,30 @@ class CompB extends React.Component {
 function CompA(props) {
 
   const [value, setValue] = useState(0);
+  const [otherValue, setOtherValue] = useState(10);
 
   useEffect(() => {
     console.log('useEffect is called')
-  })
+  }, [])
 
   return (
     <>
       <h2>Component A</h2>
+      <hr />
       <div>
         <span>Current Value value: {value}</span>
         <button onClick={() => setValue(value + 1)}>+</button>
         <button onClick={() => setValue(value - 1)}>-</button>
+        <hr />
+        <span>Other Value value: {otherValue}</span>
+        <button onClick={() => setOtherValue(otherValue + 1)}>+</button>
+        <button onClick={() => setOtherValue(otherValue - 1)}>-</button>
+        <hr />
         <div>Number Props: {props.numberProps}</div>
         <div>String Props: {props.stringProps}</div>
         <div>Boolean Props: {props.boolProps.toString()}</div>
         <div>Function Props: {<props.funcProps />}</div>
+        <hr />
       </div>
     </>
   )
