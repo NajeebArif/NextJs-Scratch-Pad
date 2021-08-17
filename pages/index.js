@@ -4,8 +4,12 @@ import styles from '../styles/Home.module.css'
 
 class CompB extends React.Component {
 
-  state = {
-    value: 0
+  constructor(props){
+
+    super();
+    this.state = {
+      value: 0
+    }
   }
 
   changeState(newStateValue) {
