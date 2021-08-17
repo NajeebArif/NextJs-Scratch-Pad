@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 class CompB extends React.Component {
 
-  constructor(props){
+  constructor(props) {
 
     super();
     this.state = {
@@ -59,11 +59,11 @@ export default function Home() {
   return (
     <>
       <h1>Home Page</h1>
-      <CompA 
+      <CompA
         numberProps={1}
         stringProps="Simple String props"
         boolProps={true}
-        funcProps={()=><div>New Inline JSX</div>}
+        funcProps={() => <div>New Inline JSX</div>}
       />
       <CompB />
     </>
