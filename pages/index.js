@@ -15,7 +15,7 @@ class CompB extends React.Component {
   }
 
   render() {
-    const myValue = this.state.value;
+    const { myValue } = this.state;
     return (
       <>
         <h2>Class Component</h2>
