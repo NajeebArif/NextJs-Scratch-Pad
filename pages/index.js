@@ -35,7 +35,7 @@ class CompB extends React.Component {
   }
 }
 
-function CompA() {
+function CompA(props) {
 
   const [value, setValue] = useState(0);
 
@@ -46,6 +46,10 @@ function CompA() {
         <span>Current Value value: {value}</span>
         <button onClick={() => setValue(value + 1)}>+</button>
         <button onClick={() => setValue(value - 1)}>-</button>
+        <div>Number Props: {props.numberProps}</div>
+        <div>String Props: {props.stringProps}</div>
+        <div>Boolean Props: {props.boolProps.toString()}</div>
+        <div>Function Props: {<props.funcProps />}</div>
       </div>
     </>
   )
@@ -55,7 +59,12 @@ export default function Home() {
   return (
     <>
       <h1>Home Page</h1>
-      <CompA />
+      <CompA 
+        numberProps={1}
+        stringProps="Simple String props"
+        boolProps={true}
+        funcProps={()=><div>New Inline JSX</div>}
+      />
       <CompB />
     </>
   )
