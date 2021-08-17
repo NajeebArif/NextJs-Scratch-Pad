@@ -2,12 +2,12 @@
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-function CompA(){
+function CompA() {
 
   const [value, setValue] = useState(0);
 
-  const changeValue = (increamentor) =>{
-    setValue(value+increamentor);
+  const changeValue = (increamentor) => {
+    setValue(value + increamentor);
   }
 
   return (
@@ -15,8 +15,8 @@ function CompA(){
       <h2>Component A</h2>
       <div>
         <span>Current Value value: {value}</span>
-        <button onClick={()=>changeValue(1)}>+</button>
-        <button onClick={()=>changeValue(-1)}>-</button>
+        <button onClick={() => changeValue(1)}>+</button>
+        <button onClick={() => changeValue(-1)}>-</button>
       </div>
     </>
   )
