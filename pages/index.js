@@ -1,6 +1,15 @@
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
+
+class CompB extends React.Component{
+
+  render(){
+    return (
+      <h2>Class Component</h2>
+    )
+  }
+}
 
 function CompA() {
 
@@ -23,6 +32,7 @@ export default function Home() {
     <>
       <h1>Home Page</h1>
       <CompA />
+      <CompB />
     </>
   )
 }
