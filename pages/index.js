@@ -8,20 +8,21 @@ class CompB extends React.Component {
     value: 0
   }
 
-  changeState(incrementor) {
+  changeState(newStateValue) {
     this.setState({
-      value: this.state.value + incrementor
+      value: newStateValue
     })
   }
 
   render() {
+    const myValue = this.state.value;
     return (
       <>
         <h2>Class Component</h2>
         <div>
-          <span>Current Value value: {this.state.value}</span>
-          <button onClick={() => this.changeState(1)}>+</button>
-          <button onClick={() => this.changeState(-1)}>-</button>
+          <span>Current Value value: {myValue}</span>
+          <button onClick={() => this.changeState(myValue + 1)}>+</button>
+          <button onClick={() => this.changeState(myValue - 1)}>-</button>
         </div>
       </>
     )
