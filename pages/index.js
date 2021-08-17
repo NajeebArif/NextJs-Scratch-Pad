@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 class CompB extends React.Component {
@@ -38,6 +38,10 @@ class CompB extends React.Component {
 function CompA(props) {
 
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    console.log('useEffect is called')
+  })
 
   return (
     <>
