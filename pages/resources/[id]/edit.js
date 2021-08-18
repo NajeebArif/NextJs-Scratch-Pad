@@ -7,15 +7,13 @@ import ResourceForm from 'components/ResourceForm';
 
 export default function Edit({resource}) {
 
-    const [form, setForm] = useState(resource);
-
-    const updateResource = () =>{
-        alert(JSON.stringify(form))
+    const updateResource = (formData) =>{
+        alert(JSON.stringify(formData))
     }
 
     return (
         <FormContainer>
-            <ResourceForm onFormSubmit={updateResource} initialData={form}/>
+            <ResourceForm onFormSubmit={updateResource} initialData={resource}/>
         </FormContainer>
     )
 }
