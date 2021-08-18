@@ -21,24 +21,22 @@ export default function Home({resources}) {
   )
 }
 
-export async function getServerSideProps(){
-  const dataJson = await fetch("http://localhost:3000/api/resources")
-  const data  = await dataJson.json();
-  console.log(data)
-  return {
-    props: {
-      resources: data
-    }
-  }
-}
-
-// export async function getStaticProps(){
+// export async function getServerSideProps(){
 //   const dataJson = await fetch("http://localhost:3000/api/resources")
 //   const data  = await dataJson.json();
-//   console.log(data)
 //   return {
 //     props: {
 //       resources: data
 //     }
 //   }
 // }
+
+export async function getStaticProps(){
+  const dataRes = await fetch("http://localhost:3000/api/resources");
+  const data = await dataRes.json();
+  return {
+    props: {
+      resources: data
+    }
+  }
+}
