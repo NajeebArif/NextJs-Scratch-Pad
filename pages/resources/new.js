@@ -11,10 +11,10 @@ const DEFAULT_DATA = {
 export default function ResourceCreate() {
     const [form, setForm] = useState(DEFAULT_DATA);
 
-    const handleTitleChanged = (e)=>{
+    const handleChange = (e)=>{
         setForm({
             ...form,
-            title:e.target.value
+           [e.target.name] :e.target.value
         })
     }
 
@@ -31,7 +31,8 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <input
                                             value={form.title}
-                                            onChange={handleTitleChanged}
+                                            onChange={handleChange}
+                                            name="title"
                                             className="input"
                                             type="text"
                                             placeholder="Learn Next JS and Sanity IO" />
@@ -44,6 +45,8 @@ export default function ResourceCreate() {
                                         <textarea
                                             className="textarea"
                                             value={form.description}
+                                            onChange={handleChange}
+                                            name="description"
                                             placeholder="Learn these technologies because they are very popular and enable better SEO"></textarea>
                                     </div>
                                 </div>
@@ -54,6 +57,8 @@ export default function ResourceCreate() {
                                         <input
                                             className="input"
                                             value={form.link}
+                                            onChange={handleChange}
+                                            name="link"
                                             type="text"
                                             placeholder="https://academy.eincode.com" />
                                     </div>
@@ -63,7 +68,8 @@ export default function ResourceCreate() {
                                     <label className="label">Priority</label>
                                     <div className="control">
                                         <div className="select">
-                                            <select value={form.priority}>
+                                            <select value={form.priority} onChange={handleChange}
+                                            name="priority">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -78,6 +84,8 @@ export default function ResourceCreate() {
                                         <input
                                             className="input"
                                             value={form.timeToFinish}
+                                            onChange={handleChange}
+                                            name="timeToFinish"
                                             type="number"
                                             placeholder="60 (time is in minutes)" />
                                     </div>
