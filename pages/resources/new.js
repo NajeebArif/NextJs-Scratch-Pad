@@ -1,6 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
+
+const DEFAULT_DATA = {
+    title: "",
+    description: "",
+    link: "",
+    priority: "2",
+    timeToFinish: 60
+  }
 
 export default function ResourceCreate() {
+    const [form, setForm] = useState(DEFAULT_DATA);
+
     return (
         <div>
             <div className="container">
@@ -13,6 +23,7 @@ export default function ResourceCreate() {
                                     <label className="label">Title</label>
                                     <div className="control">
                                         <input
+                                            value={form.title}
                                             className="input"
                                             type="text"
                                             placeholder="Learn Next JS and Sanity IO" />
@@ -24,6 +35,7 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <textarea
                                             className="textarea"
+                                            value={form.description}
                                             placeholder="Learn these technologies because they are very popular and enable better SEO"></textarea>
                                     </div>
                                 </div>
@@ -33,6 +45,7 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <input
                                             className="input"
+                                            value={form.link}
                                             type="text"
                                             placeholder="https://academy.eincode.com" />
                                     </div>
@@ -42,7 +55,7 @@ export default function ResourceCreate() {
                                     <label className="label">Priority</label>
                                     <div className="control">
                                         <div className="select">
-                                            <select>
+                                            <select value={form.priority}>
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -56,9 +69,11 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <input
                                             className="input"
+                                            value={form.timeToFinish}
                                             type="number"
                                             placeholder="60 (time is in minutes)" />
                                     </div>
+                                    <p className="help">Time is in minutes</p>
                                 </div>
 
                                 <div className="field is-grouped">
