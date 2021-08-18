@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import Resource from './Resource'
 
 export default function ResourceHighlight({ resources }) {
     return (
@@ -28,20 +28,13 @@ const ResourceHighlightBanner = () => (
     </div>
 )
 
-const ResourceSection = ({ resource }) => {
+const ResourceSection = (props) => {
     return (
         <>
             <section className="section">
                 <div className="columns">
                     <div className="column is-8 is-offset-2">
-                        <div className="content is-medium">
-                            <ResourceContent
-                                createdAt={resource.createdAt}
-                                title={resource.title}
-                                description={resource.description}
-                            />
-                        </div>
-                        <DetailsButton id={resource.id} />
+                        <Resource {...props} />
                     </div>
                 </div>
             </section>
@@ -49,22 +42,3 @@ const ResourceSection = ({ resource }) => {
     )
 }
 
-const ResourceContent = ({ createdAt, title, description }) => {
-    return (
-        <>
-            <h2 className="subtitle is-4">{createdAt}</h2>
-            <h1 className="title">{title}</h1>
-            <p>{description}</p>
-        </>
-    )
-}
-
-const DetailsButton = ({ id }) => {
-    return (
-        <Link href={`resources/${id}`}>
-            <button className="button is-link">
-                Details
-            </button>
-        </Link>
-    )
-}
