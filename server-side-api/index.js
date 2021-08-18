@@ -26,7 +26,8 @@ app.post('/api/resources',(req,res)=>{
     resource.createdAt = new Date();
     resource.status = "inactive";
     resource.id = Date.now().toString();
-    resources.push(resource)
+    // resources.push(resource)
+    resources.unshift(resource)
     fs.writeFileSync(pathToFile,JSON.stringify(resources,null,2), (err)=>{
         if(err){
             return res.status(422).send("Cannot store data in the file!");
