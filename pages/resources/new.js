@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 const DEFAULT_DATA = {
     title: "",
@@ -6,25 +7,23 @@ const DEFAULT_DATA = {
     link: "",
     priority: "2",
     timeToFinish: 60
-  }
+}
 
 export default function ResourceCreate() {
     const [form, setForm] = useState(DEFAULT_DATA);
 
     const resetForm = () => setForm(DEFAULT_DATA);
 
-    const handleSubmit = () =>{
-        fetch("/api/resources",{
-            body: JSON.stringify(form),
-            headers: {"Content-Type":"application/json"},
-            method: "POST"
-        })
+    const handleSubmit = () => {
+        axios.post("/api/resources", form)
+        .then(()=>{})
+        .catch(err=>alert(err?.response?.data))
     }
 
-    const handleChange = (e)=>{
+    const handleChange = (e) => {
         setForm({
             ...form,
-           [e.target.name] :e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -79,7 +78,7 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <div className="select">
                                             <select value={form.priority} onChange={handleChange}
-                                            name="priority">
+                                                name="priority">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
