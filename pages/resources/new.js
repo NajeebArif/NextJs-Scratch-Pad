@@ -11,6 +11,13 @@ const DEFAULT_DATA = {
 export default function ResourceCreate() {
     const [form, setForm] = useState(DEFAULT_DATA);
 
+    const handleTitleChanged = (e)=>{
+        setForm({
+            ...form,
+            title:e.target.value
+        })
+    }
+
     return (
         <div>
             <div className="container">
@@ -24,6 +31,7 @@ export default function ResourceCreate() {
                                     <div className="control">
                                         <input
                                             value={form.title}
+                                            onChange={handleTitleChanged}
                                             className="input"
                                             type="text"
                                             placeholder="Learn Next JS and Sanity IO" />
