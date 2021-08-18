@@ -1,5 +1,4 @@
 import Footer from 'components/Footer'
-import Navbar from 'components/Navbar'
 import Newsletter from 'components/Newsletter'
 import ResourceList from 'components/ResourceDetails'
 import ResourceHighlight from 'components/ResourceHighlight'
