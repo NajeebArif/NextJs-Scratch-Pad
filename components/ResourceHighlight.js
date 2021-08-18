@@ -8,7 +8,9 @@ export default function ResourceHighlight({ resources }) {
                 <div className="hero-body">
                     <div className="container">
                         <ResourceHighlightBanner />
-                        {resources.map(resource => <ResourceSection key={resource.id} resource={resource} />)}
+                        {
+                            resources.map(resource => <ResourceSection key={resource.id} resource={resource} />)
+                        }
                     </div>
                 </div>
             </section>
