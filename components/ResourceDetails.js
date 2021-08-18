@@ -1,14 +1,8 @@
 import React from 'react'
+import Resource from './Resource';
 
 export default function ResourceList({ resources }) {
-    const renderResources = () => resources.map(res =>
-    (<div key={res.id} className="column is-5 is-offset-1 ">
-        <div className="content is-medium">
-            <h2 className="subtitle is-5 has-text-grey">{res.createdAt}</h2>
-            <h1 className="title has-text-black is-3">{res.title}</h1>
-            <p className="has-text-dark">{res.description}</p>
-        </div>
-    </div>));
+    const renderResources = () => resources.map(res => <ResourceListDetails key={res.id} resource={res} />);
 
     return (
         <div>
@@ -16,13 +10,23 @@ export default function ResourceList({ resources }) {
                 <div className="hero-body">
                     <div className="container">
                         <div className="columns is-multiline is-variable is-8">
-                            {
-                                renderResources()
-                            }
+                            {renderResources()}
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+    )
+}
+
+const ResourceListDetails = (props) => {
+    return (
+        <>
+            <div className="column is-5 is-offset-1 ">
+                <div className="content is-medium">
+                    <Resource {...props} />
+                </div>
+            </div>
+        </>
     )
 }
