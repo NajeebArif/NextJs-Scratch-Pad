@@ -4,11 +4,10 @@ import Newsletter from 'components/Newsletter'
 import ResourceList from 'components/ResourceDetails'
 import ResourceHighlight from 'components/ResourceHighlight'
 
-import { resources } from 'api/data'
 
 import React from 'react'
 
-export default function Home() {
+export default function Home({resources}) {
   return (
     <>
       <Navbar />
@@ -22,4 +21,15 @@ export default function Home() {
       <Footer />
     </>
   )
+}
+
+export async function getStaticProps(){
+  const dataJson = await fetch("http://localhost:3000/api/resources")
+  const data  = await dataJson.json();
+  console.log(data)
+  return {
+    props: {
+      resources: data
+    }
+  }
 }
