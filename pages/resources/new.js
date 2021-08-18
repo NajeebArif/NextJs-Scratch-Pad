@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useRouter } from "next/router";
+
 
 const DEFAULT_DATA = {
     title: "",
@@ -9,16 +11,18 @@ const DEFAULT_DATA = {
     timeToFinish: 60
 }
 
-export default function ResourceCreate() {
+const ResourceCreate = () => {
+
     const [form, setForm] = useState(DEFAULT_DATA);
+    const router = useRouter();
+
+    const submitForm = () => {
+        axios.post("/api/resources", form)
+            .then(_ => router.push("/"))
+            .catch(err => alert(err?.response?.data));
+    }
 
     const resetForm = () => setForm(DEFAULT_DATA);
-
-    const handleSubmit = () => {
-        axios.post("/api/resources", form)
-        .then(()=>{})
-        .catch(err=>alert(err?.response?.data))
-    }
 
     const handleChange = (e) => {
         setForm({
@@ -103,7 +107,7 @@ export default function ResourceCreate() {
 
                                 <div className="field is-grouped">
                                     <div className="control">
-                                        <button type="button" onClick={handleSubmit} className="button is-link">Submit</button>
+                                        <button type="button" onClick={submitForm} className="button is-link">Submit</button>
                                     </div>
                                     <div className="control">
                                         <button type="button" onClick={resetForm} className="button is-link is-light">Reset</button>
@@ -117,3 +121,6 @@ export default function ResourceCreate() {
         </div>
     )
 }
+
+
+export default ResourceCreate;
