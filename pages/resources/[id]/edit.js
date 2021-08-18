@@ -4,11 +4,17 @@
 import React, {useState} from 'react'
 import FormContainer from 'components/FormContainer';
 import ResourceForm from 'components/ResourceForm';
+import axios from 'axios';
+import { useRouter } from "next/router";
 
 export default function Edit({resource}) {
 
+    const router = useRouter();
+
     const updateResource = (formData) =>{
-        alert(JSON.stringify(formData))
+        axios.patch("/api/resources", formData)
+            .then(_ => router.push(`/resources/${formData.id}`))
+            .catch(err => alert(err?.response?.data));
     }
 
     return (
