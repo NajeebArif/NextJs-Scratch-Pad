@@ -20,6 +20,12 @@ app.get('/api/resources', (req, res) => {
     res.send(getResources())
 })
 
+app.get("/api/activeresource", (req, res) => {
+    const resources = getResources();
+    const activeResource = resources.find(resource => resource.status === "active");
+    res.send(activeResource);
+})
+
 app.get('/api/resources/:id', (req, res) => {
     const resources = getResources();
     const { id } = req.params;
