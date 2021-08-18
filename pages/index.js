@@ -4,6 +4,8 @@ import Newsletter from 'components/Newsletter'
 import ResourceDetails from 'components/ResourceDetails'
 import ResourceHighlight from 'components/ResourceHighlight'
 
+import { resources } from 'api/data'
+
 import React from 'react'
 
 export default function Home() {
@@ -12,6 +14,7 @@ export default function Home() {
       <Navbar />
 
       <ResourceHighlight />
+      {JSON.stringify(resources)}
 
       <Newsletter />
 
