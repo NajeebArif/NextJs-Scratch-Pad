@@ -24,7 +24,21 @@ export default function ResourceDetail({resource}) {
     )
 }
 
-export async function getServerSideProps({params}){
+export async function getStaticPaths(){
+    const resData = await fetch(`http://localhost:3001/api/resources`)
+    const data = await resData.json();
+    const paths = data.map(res=>{ 
+        return {
+            params: { id: res.id}
+        }
+    })
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export async function getStaticProps({params}){
     const resData = await fetch(`http://localhost:3001/api/resources/${params.id}`)
     const data = await resData.json();
     return {
@@ -33,3 +47,13 @@ export async function getServerSideProps({params}){
         }
     }
 }
+
+// export async function getServerSideProps({params}){
+//     const resData = await fetch(`http://localhost:3001/api/resources/${params.id}`)
+//     const data = await resData.json();
+//     return {
+//         props: {
+//             resource: data
+//         }
+//     }
+// }
