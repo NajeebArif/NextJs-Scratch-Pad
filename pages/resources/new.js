@@ -25,9 +25,10 @@ const ResourceCreate = () => {
     const resetForm = () => setForm(DEFAULT_DATA);
 
     const handleChange = (e) => {
+        const [name, value] = e.target;
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [name]: value
         })
     }
 
