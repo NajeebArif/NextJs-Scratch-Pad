@@ -13,12 +13,11 @@ export default function Home() {
     <>
       <Navbar />
 
-      <ResourceHighlight />
-      {JSON.stringify(resources)}
+      <ResourceHighlight resources={resources}/>
 
       <Newsletter />
 
-      <ResourceDetails />
+      <ResourceDetails resources={resources}/>
 
       <Footer />
     </>
