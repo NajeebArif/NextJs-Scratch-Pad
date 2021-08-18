@@ -1,7 +1,7 @@
 import Footer from 'components/Footer'
 import Navbar from 'components/Navbar'
 import Newsletter from 'components/Newsletter'
-import ResourceDetails from 'components/ResourceDetails'
+import ResourceList from 'components/ResourceDetails'
 import ResourceHighlight from 'components/ResourceHighlight'
 
 import { resources } from 'api/data'
@@ -17,7 +17,7 @@ export default function Home() {
 
       <Newsletter />
 
-      <ResourceDetails resources={resources}/>
+      <ResourceList resources={resources}/>
 
       <Footer />
     </>

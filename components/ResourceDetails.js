@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ResourceDetails() {
+export default function ResourceList() {
     return (
         <div>
             <section className="hero ">
