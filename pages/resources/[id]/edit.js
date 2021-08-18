@@ -1,13 +1,22 @@
 
 
 
-import React from 'react'
+import React, {useState} from 'react'
+import FormContainer from 'components/FormContainer';
+import ResourceForm from 'components/ResourceForm';
 
 export default function Edit({resource}) {
+
+    const [form, setForm] = useState(resource);
+
+    const updateResource = () =>{
+        alert(JSON.stringify(form))
+    }
+
     return (
-        <div>
-            <h2>I am edit page: {resource.title}</h2>
-        </div>
+        <FormContainer>
+            <ResourceForm onFormSubmit={updateResource} initialData={form}/>
+        </FormContainer>
     )
 }
 
