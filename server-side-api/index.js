@@ -8,26 +8,39 @@ const cors = require('cors');
 
 const corsOptions = {
     origin: 'http://localhost:3000',
-    optionsSuccessStatus:200
+    optionsSuccessStatus: 200
 }
 
 app.use(cors(corsOptions));
 app.use(express.json())
 
-const getResources =()=> JSON.parse(fs.readFileSync(pathToFile))
+const getResources = () => JSON.parse(fs.readFileSync(pathToFile))
 
-app.get('/api/resources',(req,res)=>{
+app.get('/api/resources', (req, res) => {
     res.send(getResources())
 })
 
-app.get('/api/resources/:id',(req,res)=>{
+app.get('/api/resources/:id', (req, res) => {
     const resources = getResources();
-    const {id} = req.params;
-    const resource = resources.find(resource=>resource.id===id);
+    const { id } = req.params;
+    const resource = resources.find(resource => resource.id === id);
     res.send(resource)
 })
 
-app.post('/api/resources',(req,res)=>{
+app.patch('/api/resources/:id', (req, res) => {
+    const resources = getResources();
+    const { id } = req.params;
+    const index = resources.findIndex(resource => resource.id === id);
+    resources[index] = req.body;
+    fs.writeFile(pathToFile, JSON.stringify(resources, null, 2), (err) => {
+        if (err) {
+            return res.status(422).send("Cannot store data in the file!");
+        }
+        return res.send("Data has been saved!");
+    })
+})
+
+app.post('/api/resources', (req, res) => {
     const resources = getResources();
     const resource = req.body;
     resource.createdAt = new Date();
@@ -35,14 +48,14 @@ app.post('/api/resources',(req,res)=>{
     resource.id = Date.now().toString();
     // resources.push(resource)
     resources.unshift(resource)
-    fs.writeFile(pathToFile,JSON.stringify(resources,null,2), (err)=>{
-        if(err){
+    fs.writeFile(pathToFile, JSON.stringify(resources, null, 2), (err) => {
+        if (err) {
             return res.status(422).send("Cannot store data in the file!");
         }
         return res.send("Data has been saved!");
     })
 })
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is litening to port ${PORT}`)
 })
