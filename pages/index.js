@@ -10,8 +10,6 @@ import React from 'react'
 export default function Home({resources}) {
   return (
     <>
-      <Navbar />
-
       <ResourceHighlight resources={resources.slice(0,2)}/>
 
       <Newsletter />
@@ -23,7 +21,7 @@ export default function Home({resources}) {
   )
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   const dataJson = await fetch("http://localhost:3000/api/resources")
   const data  = await dataJson.json();
   console.log(data)
@@ -33,3 +31,14 @@ export async function getStaticProps(){
     }
   }
 }
+
+// export async function getStaticProps(){
+//   const dataJson = await fetch("http://localhost:3000/api/resources")
+//   const data  = await dataJson.json();
+//   console.log(data)
+//   return {
+//     props: {
+//       resources: data
+//     }
+//   }
+// }
