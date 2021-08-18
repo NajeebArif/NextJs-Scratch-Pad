@@ -11,6 +11,13 @@ const DEFAULT_DATA = {
 export default function ResourceCreate() {
     const [form, setForm] = useState(DEFAULT_DATA);
 
+    const resetForm = () => setForm(DEFAULT_DATA);
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        alert(JSON.stringify(form))
+    }
+
     const handleChange = (e)=>{
         setForm({
             ...form,
@@ -94,10 +101,10 @@ export default function ResourceCreate() {
 
                                 <div className="field is-grouped">
                                     <div className="control">
-                                        <button className="button is-link">Submit</button>
+                                        <button type="button" onClick={handleSubmit} className="button is-link">Submit</button>
                                     </div>
                                     <div className="control">
-                                        <button className="button is-link is-light">Cancel</button>
+                                        <button type="button" onClick={resetForm} className="button is-link is-light">Reset</button>
                                     </div>
                                 </div>
                             </form>
