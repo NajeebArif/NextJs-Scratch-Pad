@@ -13,9 +13,12 @@ export default function ResourceCreate() {
 
     const resetForm = () => setForm(DEFAULT_DATA);
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        alert(JSON.stringify(form))
+    const handleSubmit = () =>{
+        fetch("/api/resources",{
+            body: JSON.stringify(form),
+            headers: {"Content-Type":"application/json"},
+            method: "POST"
+        })
     }
 
     const handleChange = (e)=>{
