@@ -9,7 +9,7 @@ export default function ResourceHighlight() {
                         <div className="columns">
                             <div className="column is-8 is-offset-2">
                                 <figure className="image is-16by9">
-                                    <img src="images/first-post.png" alt="" />
+                                    <img src="https://media.istockphoto.com/photos/bloggingblog-concepts-ideas-with-worktable-picture-id922745190?k=6&m=922745190&s=612x612&w=0&h=qBmau_GKQZasMW14NJBp3u2vU-f5YFCcN1N71Exa8iE=" alt="" />
                                 </figure>
                             </div>
                         </div>
