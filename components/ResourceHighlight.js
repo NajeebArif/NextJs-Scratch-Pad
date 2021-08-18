@@ -62,7 +62,7 @@ const ResourceContent = ({ createdAt, title, description }) => {
 const DetailsButton = ({ id }) => {
     return (
         <Link href={`resources/${id}`}>
-            <button className="button is-primary">
+            <button className="button is-link">
                 Details
             </button>
         </Link>
