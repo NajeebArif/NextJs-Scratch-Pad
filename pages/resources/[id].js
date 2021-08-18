@@ -1,6 +1,11 @@
 import React from 'react'
+import { useRouter } from 'next/router';
 
 export default function ResourceDetail({resource}) {
+    const router = useRouter();
+    if(router.isFallback){
+        return <div>Data is being loaded.</div>
+    }
     return (
         <div>
             <section className="hero ">
@@ -34,7 +39,8 @@ export async function getStaticPaths(){
     })
     return {
         paths,
-        fallback: false
+        // fallback: false
+        fallback: true
     }
 }
 
