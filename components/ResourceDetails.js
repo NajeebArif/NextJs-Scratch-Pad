@@ -7,9 +7,8 @@ export default function ResourceList({ resources }) {
                 <div className="hero-body">
                     <div className="container">
                         {
-                            resources.map(res => {
-
-                                <section key={res.id} className="section">
+                            resources.map(res =>
+                                (<section key={res.id} className="section">
                                     <div className="columns is-variable is-8">
                                         <div className="column is-5 is-offset-1 ">
                                             <div className="content is-medium">
@@ -19,8 +18,8 @@ export default function ResourceList({ resources }) {
                                             </div>
                                         </div>
                                     </div>
-                                </section>
-                            })
+                                </section>)
+                            )
                         }
                     </div>
                 </div>
