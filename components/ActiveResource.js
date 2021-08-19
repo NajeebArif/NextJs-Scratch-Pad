@@ -10,7 +10,7 @@ const ActiveResource = () => {
 
     useEffect(() => {
         async function fetchResource() {
-            const axiosRes = await axios.get("/api/activeresource");
+            const axiosRes = await axios.get("/api/activeResource");
             const resource = axiosRes.data;
             const timeToFinish = parseInt(resource.timeToFinish, 10);
             const elapsedTime = moment().diff(moment(resource.activationTime), "seconds");
@@ -46,7 +46,7 @@ const ActiveResource = () => {
                     {seconds}
                 </h2>
             </div>
-            <Link href="/">
+            <Link href={`/resources/${resource.id}`}>
                 <a className="button">
                     Go to resource
                 </a>
