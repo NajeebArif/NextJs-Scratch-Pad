@@ -18,8 +18,13 @@ export default function ResourceDetail({ resource }) {
             <BodyContainer>
                 <Resource resource={resource}>
                     <p className="mb-1">Time to finish: {resource.timeToFinish} min</p>
-                    <EditResourceButton _id={resource.id} />
-                    {resource.status === "inactive" ? <ActivateResourceButton onClick={activeResource} /> : ''}
+                    {
+                        resource.status==="inactive" &&
+                        <>
+                            <EditResourceButton _id={resource.id} />
+                            <ActivateResourceButton onClick={activeResource} />
+                        </>
+                    }
                 </Resource>
             </BodyContainer>
         </>
