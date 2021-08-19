@@ -1,5 +1,15 @@
 [
   {
+    "title": "Some New Resource",
+    "description": "This will be used for testing",
+    "link": "https://NajeebArif.github.io",
+    "priority": "3",
+    "timeToFinish": "2",
+    "createdAt": "2021-08-19T11:59:25.375Z",
+    "status": "inactive",
+    "id": "1629374365375"
+  },
+  {
     "id": "1",
     "title": "Learning Singleton Pattern",
     "description": "I would like to learn singleton in JS language, it's important for my work",
