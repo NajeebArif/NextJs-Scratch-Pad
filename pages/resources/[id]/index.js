@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import axios from "axios";
+import BodyContainer from 'components/BodyContainer';
 
 import Resource from 'components/Resource';
 
@@ -13,25 +14,15 @@ export default function ResourceDetail({ resource }) {
     }
 
     return (
-        <div>
-            <section className="hero ">
-                <div className="hero-body">
-                    <div className="container">
-                        <section className="section">
-                            <div className="columns">
-                                <div className="column is-8 is-offset-2">
-                                    <Resource resource={resource}>
-                                        <p>Time to finish: {resource.timeToFinish} min</p>
-                                        <EditResourceButton id={resource.id} />
-                                        <ActivateResourceButton status={resource.status} activeResource={activeResource}/>
-                                    </Resource>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <>
+            <BodyContainer>
+                <Resource resource={resource}>
+                    <p className="mb-1">Time to finish: {resource.timeToFinish} min</p>
+                    <EditResourceButton _id={resource.id} />
+                    {resource.status === "inactive" ? <ActivateResourceButton onClick={activeResource} /> : ''}
+                </Resource>
+            </BodyContainer>
+        </>
     )
 }
 
@@ -45,9 +36,9 @@ export async function getServerSideProps({ params }) {
     }
 }
 
-const EditResourceButton = ({ id }) => {
+const EditResourceButton = ({ _id }) => {
     return (
-        <Link href={`/resources/${id}/edit`}>
+        <Link href={`/resources/${_id}/edit`}>
             <a className="button is-warning">
                 Edit Resource
             </a>
@@ -55,11 +46,10 @@ const EditResourceButton = ({ id }) => {
     )
 }
 
-const ActivateResourceButton = ({status, activeResource}) => {
+const ActivateResourceButton = (props) => {
     return (
         <button
-            hidden={status === "complete"}
-            onClick={activeResource}
+            {...props}
             className="button is-success ml-1">
             Activate
         </button>
