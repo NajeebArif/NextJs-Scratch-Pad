@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'next/link';
 import axios from "axios";
 
+import Resource from 'components/Resource';
+
 export default function ResourceDetail({ resource }) {
 
     const activeResource = () => {
@@ -18,22 +20,11 @@ export default function ResourceDetail({ resource }) {
                         <section className="section">
                             <div className="columns">
                                 <div className="column is-8 is-offset-2">
-                                    <div className="content is-medium">
-                                        <h2 className="subtitle is-4">{resource.createdAt}</h2>
-                                        <h1 className="title">{resource.title}</h1>
-                                        <p>{resource.description}</p>
+                                    <Resource resource={resource}>
                                         <p>Time to finish: {resource.timeToFinish} min</p>
-                                        <Link href={`/resources/${resource.id}/edit`}>
-                                            <a className="button is-warning">
-                                                Edit Resource
-                                            </a>
-                                        </Link>
-                                        <button
-                                            onClick={activeResource}
-                                            className="button is-success ml-1">
-                                            Activate
-                                        </button>
-                                    </div>
+                                        <EditResourceButton id={resource.id} />
+                                        <ActivateResourceButton status={resource.status} activeResource={activeResource}/>
+                                    </Resource>
                                 </div>
                             </div>
                         </section>
@@ -52,4 +43,25 @@ export async function getServerSideProps({ params }) {
             resource: data
         }
     }
+}
+
+const EditResourceButton = ({ id }) => {
+    return (
+        <Link href={`/resources/${id}/edit`}>
+            <a className="button is-warning">
+                Edit Resource
+            </a>
+        </Link>
+    )
+}
+
+const ActivateResourceButton = ({status, activeResource}) => {
+    return (
+        <button
+            hidden={status === "complete"}
+            onClick={activeResource}
+            className="button is-success ml-1">
+            Activate
+        </button>
+    )
 }
