@@ -12,7 +12,7 @@ const Resource = (props) => {
                 />
             </div>
             {
-                props.children ? [...props.children] : <DetailsButton id={props.resource.id} />
+                props.children ? props.children : <DetailsButton id={props.resource.id} />
             }
         </>
     )
