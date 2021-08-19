@@ -1,5 +1,6 @@
 
 import Link from 'next/link'
+import moment from 'moment';
 
 
 const Resource = (props) => {
@@ -19,9 +20,8 @@ const Resource = (props) => {
 const ResourceContent = ({ resource }) => {
     return (
         <>
-            <h2 className="subtitle is-4">{resource.createdAt} <ResourceLabel status={resource.status}/></h2>
+            <h2 className="subtitle is-4">{moment(resource.createdAt).format("LLL")} <ResourceLabel status={resource.status}/></h2>
             <h1 className="title">{resource.title}</h1>
-            
             <p>{resource.description}</p>
         </>
     )
