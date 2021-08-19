@@ -23,7 +23,7 @@ const ResourceContent = ({ resource }) => {
         <>
             <h2 className="subtitle is-4">{moment(resource.createdAt).format("LLL")} <ResourceLabel status={resource.status} /></h2>
             <h1 className="title">{resource.title}</h1>
-            <p>{resource.description}</p>
+            <p className="mb-0">{resource.description}</p>
         </>
     )
 }
@@ -31,7 +31,7 @@ const ResourceContent = ({ resource }) => {
 const DetailsButton = ({ id }) => {
     return (
         <Link href={`resources/${id}`}>
-            <button className="button is-link">
+            <button className="button is-ghost pl-0">
                 Details
             </button>
         </Link>
