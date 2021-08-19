@@ -56,12 +56,21 @@ const ActiveResource = () => {
                     )
                 }
             </div>
-            <Link href={`/resources/${resource.id}`}>
-                <a className="button">
-                    Go to resource
-                </a>
-            </Link>
-        </div>
+            {
+                hasResource ?
+                    <Link href={`/resources/${resource.id}`}>
+                        <a className="button">
+                            Go to resource
+                        </a>
+                    </Link> :
+                    <Link href="/">
+                        <a className="button">
+                            Go to resources
+                        </a>
+                    </Link>
+            }
+
+        </div >
     )
 }
 
