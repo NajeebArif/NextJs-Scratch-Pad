@@ -28,19 +28,20 @@ const ActiveResource = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-          setSeconds(seconds - 1);
+            setSeconds(seconds - 1);
         }, 1000);
-    
-        if (seconds < 0) {
-          clearInterval(interval);
-        }
-    
-        return () => clearInterval(interval);
-      }, [seconds])
 
+        if (seconds < 0) {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [seconds])
+
+    const hasResource = resource && resource.id;
     return (
         <div className="active-resource">
-            <h1 className="resource-name">{resource.title}</h1>
+            <h1 className="resource-name">{hasResource ? resource.title : "No Resource Active"}</h1>
             <div className="time-wrapper">
                 <h2 className="elapsed-time">
                     {seconds}
