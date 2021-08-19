@@ -43,9 +43,18 @@ const ActiveResource = () => {
         <div className="active-resource">
             <h1 className="resource-name">{hasResource ? resource.title : "No Resource Active"}</h1>
             <div className="time-wrapper">
-                <h2 className="elapsed-time">
-                    {seconds}
-                </h2>
+                {hasResource &&
+                    (seconds > 0 ?
+                        <h2 className="elapsed-time">
+                            {seconds}
+                        </h2> :
+                        <h2 className="elapsed-time">
+                            <button className="button is-success">
+                                Click and Done!
+                            </button>
+                        </h2>
+                    )
+                }
             </div>
             <Link href={`/resources/${resource.id}`}>
                 <a className="button">
